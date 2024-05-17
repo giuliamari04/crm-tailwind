@@ -1,0 +1,26 @@
+[
+    {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "password": "12345678",
+        "profile_photo_path":"img/users/johndoe.jpg",
+        "created_at": "2024-01-01 00:00:00",
+        "updated_at": "2024-01-01 00:00:00"
+    },
+    {
+        "name": "Jane Doe",
+        "email": "jane@example.com",
+        "password": "12345678",
+        "profile_photo_path":"img/users/janedoe.jpg",
+        "created_at": "2024-01-02 00:00:00",
+        "updated_at": "2024-01-02 00:00:00"
+    },
+    {
+        "name": "Alice Smith",
+        "email": "alice@example.com",
+        "password": "12345678",
+        "profile_photo_path":"img/users/alicesmith.jpg",
+        "created_at": "2024-01-03 00:00:00",
+        "updated_at": "2024-01-03 00:00:00"
+    }
+]

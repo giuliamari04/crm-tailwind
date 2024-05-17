@@ -1,0 +1,20 @@
+[
+    {
+        "car_model": "Toyota Camry",
+        "rental_start_date": "2024-05-20",
+        "rental_end_date": "2024-05-25",
+        "client_id": 1
+    },
+    {
+        "car_model": "Honda Civic",
+        "rental_start_date": "2024-05-22",
+        "rental_end_date": "2024-05-27",
+        "client_id": 2
+    },
+    {
+        "car_model": "Ford Mustang",
+        "rental_start_date": "2024-05-25",
+        "rental_end_date": "2024-05-30",
+        "client_id": 3
+    }
+]

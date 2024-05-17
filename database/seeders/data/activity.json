@@ -1,0 +1,50 @@
+[
+    {
+        "client_id": 1,
+        "title": "Meeting per la presentazione della proposta",
+        "small_description": "Discussione sulle soluzioni energetiche proposte",
+        "long_description": "Incontro con il cliente per presentare e discutere la proposta di implementazione di un sistema di energia solare",
+        "subject": "Proposta energia solare",
+        "start_date": "2024-05-20 10:00:00",
+        "end_date": "2024-05-20 12:00:00",
+        "type_comunication": "Meeting",
+        "view_done": true,
+        "semaforo": "verde"
+    },
+    {
+        "client_id": 2,
+        "title": "Visita tecnica al sito di produzione",
+        "small_description": "Valutazione dei requisiti tecnici per l'installazione",
+        "long_description": "Visita al sito di produzione del cliente per valutare i requisiti tecnici e l'idoneità per l'installazione dei nuovi sistemi energetici",
+        "subject": "Valutazione sito produzione",
+        "start_date": "2024-05-22 09:00:00",
+        "end_date": "2024-05-22 11:00:00",
+        "type_comunication": "Visita",
+        "view_done": false,
+        "semaforo": "giallo"
+    },
+    {
+        "client_id": 3,
+        "title": "Presentazione delle nuove soluzioni di conservazione energetica",
+        "small_description": "Introduzione alle nuove tecnologie di conservazione dell'energia",
+        "long_description": "Evento di presentazione delle ultime innovazioni nel campo della conservazione energetica, con focus su soluzioni per il settore farmaceutico",
+        "subject": "Nuove soluzioni energetiche",
+        "start_date": "2024-05-25 14:00:00",
+        "end_date": "2024-05-25 16:00:00",
+        "type_comunication": "Evento",
+        "view_done": false,
+        "semaforo": "rosso"
+    },
+    {
+        "client_id": 4,
+        "title": "Follow-up chiamata telefonica",
+        "small_description": "Aggiornamento sullo stato della proposta",
+        "long_description": "Chiamata telefonica di follow-up con il cliente per fornire aggiornamenti sullo stato della proposta e rispondere a eventuali domande",
+        "subject": "Follow-up proposta",
+        "start_date": "2024-05-23 11:30:00",
+        "end_date": "2024-05-23 12:00:00",
+        "type_comunication": "Chiamata",
+        "view_done": true,
+        "semaforo": "verde"
+    }
+]

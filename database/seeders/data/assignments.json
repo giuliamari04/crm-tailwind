@@ -1,0 +1,58 @@
+[
+    {
+        "client_id": 1,
+        "resource_id": 1,
+        "resource_type": "Employee",
+        "assigned_to_id": 2,
+        "assignment_date": "2024-05-15",
+        "return_date": null
+    },
+    {
+        "client_id": 2,
+        "resource_id": 2,
+        "resource_type": "Manager",
+        "assigned_to_id": 3,
+        "assignment_date": "2024-05-16",
+        "return_date": "2024-05-20"
+    },
+    {
+        "client_id": 1,
+        "resource_id": 3,
+        "resource_type": "Employee",
+        "assigned_to_id": 1,
+        "assignment_date": "2024-05-18",
+        "return_date": "2024-05-22"
+    },
+    {
+        "client_id": 2,
+        "resource_id": 4,
+        "resource_type": "Employee",
+        "assigned_to_id": 2,
+        "assignment_date": "2024-05-19",
+        "return_date": "2024-05-23"
+    },
+    {
+        "client_id": 3,
+        "resource_id": 1,
+        "resource_type": "Manager",
+        "assigned_to_id": 3,
+        "assignment_date": "2024-05-20",
+        "return_date": null
+    },
+    {
+        "client_id": 4,
+        "resource_id": 3,
+        "resource_type": "Employee",
+        "assigned_to_id": 2,
+        "assignment_date": "2024-05-21",
+        "return_date": "2024-05-25"
+    },
+    {
+        "client_id": 3,
+        "resource_id": 2,
+        "resource_type": "Manager",
+        "assigned_to_id": 1,
+        "assignment_date": "2024-05-22",
+        "return_date": "2024-05-26"
+    }
+]

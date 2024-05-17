@@ -1,0 +1,26 @@
+[
+    {
+        "stage_name": "Prospecting",
+        "description": "Initial stage where potential leads are identified and assessed for their suitability."
+    },
+    {
+        "stage_name": "Qualification",
+        "description": "Stage where leads are evaluated further to determine their level of interest and fit with the company's offerings."
+    },
+    {
+        "stage_name": "Needs Analysis",
+        "description": "Stage where the specific needs and requirements of the potential customer are analyzed to tailor the sales approach."
+    },
+    {
+        "stage_name": "Presentation",
+        "description": "Stage where the sales team presents the company's products or services to the potential customer."
+    },
+    {
+        "stage_name": "Negotiation",
+        "description": "Stage where negotiations take place to finalize the terms of the sale, including pricing and other terms."
+    },
+    {
+        "stage_name": "Closing",
+        "description": "Final stage where the sale is closed, and the contract is signed."
+    }
+]
