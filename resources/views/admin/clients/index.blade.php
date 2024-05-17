@@ -15,7 +15,7 @@
                                     <a href="#/dashboard">
                                         <p
                                             class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100">
-                                            dashboard</p>
+                                            Clients</p>
                                     </a><span
                                         class="text-blue-gray-500 text-sm antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
                                 </li>

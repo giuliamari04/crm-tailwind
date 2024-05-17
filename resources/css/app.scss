@@ -11,3 +11,11 @@ $fa-font-path: "../fonts/webfonts" !default;
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
+
+.hovermyBtn{
+    &:hover{
+        background-color: rgb(17, 24, 39);
+        color: white;
+    }
+}
+

@@ -46,12 +46,19 @@ class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 o
             </tr>
         </thead>
         <tbody>
-            @foreach ($clients as $client )
+            @foreach ($clientsFiltered as $client )
             <tr>
                 <td class="py-3 px-5 border-b border-blue-gray-50">
-                    <div class="flex items-center gap-4"><img
-                            src="{{Vite::asset('/public/img/'.$client->imageLogo) }}"
-                            alt="Material XD Version"
+                    <div class="flex items-center gap-4">
+                        @php
+                       $imageSrc = '/public/img/' . $client->imageLogo;
+                        $clientImagePath = public_path($imageSrc);
+                        $finalImageSrc = file_exists($clientImagePath) ? $imageSrc : '/public/img/default.jpg';
+
+                        @endphp
+                        <img
+                            src="{{Vite::asset($finalImageSrc) }}"
+                            alt="{{ $client->name }}"
                             class="inline-block relative object-cover object-center !rounded-full w-9 h-9 rounded-md">
                         <p
                             class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">
@@ -70,7 +77,11 @@ class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 o
                       {{$client->date_start}}</p>
                 </td>
                 <td class="py-3 px-5 border-b border-blue-gray-50">
-                    @foreach ($activities as $activity )
+                    @php
+                    $clientActivities = $activities->where('client_id', $client->id);
+                @endphp
+                  @if ($clientActivities->isNotEmpty())
+                  @foreach ($clientActivities as $activity)
                     @if ($activity->client_id === $client->id)
                         <div class="w-10/12">
                         <p class="antialiased font-sans mb-1 block text-xs font-medium text-blue-gray-600">
@@ -95,7 +106,14 @@ class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 o
                     @endif
 
                     @endforeach
-
+                    @else
+                    <!-- Se non ci sono attività, visualizza il messaggio -->
+                    <div class="w-10/12">
+                        <p class="antialiased font-sans mb-1 block text-xs font-medium text-blue-gray-600">
+                            Nessuna attività registrata
+                        </p>
+                    </div>
+                @endif
                 </td>
             </tr>
             @endforeach
@@ -125,15 +143,16 @@ class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 o
               </svg>
           </div>
           <div>
+            <form wire:submit.prevent="RefreshClients" class="d-flex flex-wrap accordion-body">
               <p
                   class="antialiased font-sans text-sm leading-normal text-blue-gray-900 block font-medium">
                   Filtra per settore</p><span
                   class="block antialiased font-sans text-xs font-medium text-blue-gray-500">
                   @foreach ($industries as $industry)
                       <div class="py-1">
-                          <input type="checkbox" name="industry" value="{{ $industry }}"
+                          <input type="checkbox" wire:model.lazy="industryFilter" value="{{ $industry }}"
                               class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-blue-500 checked:bg-blue-500 checked:before:bg-blue-500 hover:before:opacity-10"
-                              id="industry" wire:model.lazy="industryFilter">
+                              id="industry" >
                           <div
                               class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
                               <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5"
@@ -150,6 +169,7 @@ class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 o
 
 
               </span>
+            </form>
           </div>
       </div>
       {{-- filtro per nome --}}
@@ -169,84 +189,7 @@ class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 o
                 </span>
           </div>
       </div>
-      {{-- <div class="flex items-start gap-4 py-3">
-          <div
-              class="relative p-1 after:absolute after:-bottom-6 after:left-2/4 after:w-0.5 after:-translate-x-2/4 after:bg-blue-gray-50 after:content-[''] after:h-4/6">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                  aria-hidden="true" class="!w-5 !h-5 text-blue-gray-300">
-                  <path
-                      d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z">
-                  </path>
-              </svg>
-          </div>
-          <div>
-              <p
-                  class="antialiased font-sans text-sm leading-normal text-blue-gray-900 block font-medium">
-                  Server payments for April</p><span
-                  class="block antialiased font-sans text-xs font-medium text-blue-gray-500">21
-                  DEC 9:34 PM</span>
-          </div>
-      </div> --}}
-      {{-- <div class="flex items-start gap-4 py-3">
-          <div
-              class="relative p-1 after:absolute after:-bottom-6 after:left-2/4 after:w-0.5 after:-translate-x-2/4 after:bg-blue-gray-50 after:content-[''] after:h-4/6">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                  aria-hidden="true" class="!w-5 !h-5 text-blue-gray-300">
-                  <path d="M4.5 3.75a3 3 0 00-3 3v.75h21v-.75a3 3 0 00-3-3h-15z">
-                  </path>
-                  <path fill-rule="evenodd"
-                      d="M22.5 9.75h-21v7.5a3 3 0 003 3h15a3 3 0 003-3v-7.5zm-18 3.75a.75.75 0 01.75-.75h6a.75.75 0 010 1.5h-6a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z"
-                      clip-rule="evenodd"></path>
-              </svg>
-          </div>
-          <div>
-              <p
-                  class="antialiased font-sans text-sm leading-normal text-blue-gray-900 block font-medium">
-                  New card added for order #4395133</p><span
-                  class="block antialiased font-sans text-xs font-medium text-blue-gray-500">20
-                  DEC 2:20 AM</span>
-          </div>
-      </div> --}}
-      {{-- <div class="flex items-start gap-4 py-3">
-          <div
-              class="relative p-1 after:absolute after:-bottom-6 after:left-2/4 after:w-0.5 after:-translate-x-2/4 after:bg-blue-gray-50 after:content-[''] after:h-4/6">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                  aria-hidden="true" class="!w-5 !h-5 text-blue-gray-300">
-                  <path
-                      d="M18 1.5c2.9 0 5.25 2.35 5.25 5.25v3.75a.75.75 0 01-1.5 0V6.75a3.75 3.75 0 10-7.5 0v3a3 3 0 013 3v6.75a3 3 0 01-3 3H3.75a3 3 0 01-3-3v-6.75a3 3 0 013-3h9v-3c0-2.9 2.35-5.25 5.25-5.25z">
-                  </path>
-              </svg>
-          </div>
-          <div>
-              <p
-                  class="antialiased font-sans text-sm leading-normal text-blue-gray-900 block font-medium">
-                  Unlock packages for development</p><span
-                  class="block antialiased font-sans text-xs font-medium text-blue-gray-500">18
-                  DEC 4:54 AM</span>
-          </div>
-      </div> --}}
-      {{-- <div class="flex items-start gap-4 py-3">
-          <div
-              class="relative p-1 after:absolute after:-bottom-6 after:left-2/4 after:w-0.5 after:-translate-x-2/4 after:bg-blue-gray-50 after:content-[''] after:h-0">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                  aria-hidden="true" class="!w-5 !h-5 text-blue-gray-300">
-                  <path d="M12 7.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z"></path>
-                  <path fill-rule="evenodd"
-                      d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 14.625v-9.75zM8.25 9.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM18.75 9a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V9.75a.75.75 0 00-.75-.75h-.008zM4.5 9.75A.75.75 0 015.25 9h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.25a.75.75 0 01-.75-.75V9.75z"
-                      clip-rule="evenodd"></path>
-                  <path
-                      d="M2.25 18a.75.75 0 000 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 00-.75-.75H2.25z">
-                  </path>
-              </svg>
-          </div>
-          <div>
-              <p
-                  class="antialiased font-sans text-sm leading-normal text-blue-gray-900 block font-medium">
-                  New order #9583120</p><span
-                  class="block antialiased font-sans text-xs font-medium text-blue-gray-500">17
-                  DEC</span>
-          </div>
-      </div> --}}
+
   </div>
 </div>
 </div>
