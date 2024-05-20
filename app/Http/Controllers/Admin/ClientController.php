@@ -17,4 +17,11 @@ class ClientController extends Controller
         $industries = Client::pluck('industry')->unique()->filter();
         return view('admin.clients.index',compact('user','clients','activities','industries'));
     }
+
+    public function show($id){
+        $user = auth()->user();
+        $clients = Client::findOrFail($id);
+        $activities = Activity::whereIn('client_id', $clients->pluck('id'))->get();
+        return view('admin.clients.show', compact('user','clients', 'activities'));
+    }
 }

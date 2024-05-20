@@ -2,7 +2,8 @@
 import "~resources/css/app.scss";
 // import * as bootstrap from "bootstrap";
 import.meta.glob(["../img/**", "../fonts/**"]);
-import Alpine from 'alpinejs';
+import 'alpinejs';
+
 
 window.Alpine = Alpine;
 

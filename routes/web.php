@@ -24,6 +24,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/clients',[ClientController::class,'index'])->name('clients');
+    Route::get('/clients/{id}',[ClientController::class,'show'])->name('clients.show');
 
 
 });

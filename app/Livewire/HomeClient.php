@@ -19,6 +19,7 @@ class HomeClient extends Component
     public $industries;
     public $industryFilter = [];
     public $nameFilter = '';
+    public $nameRFilter = '';
 
     public function render()
     {
@@ -54,4 +55,10 @@ class HomeClient extends Component
     public function RefreshClients(){
         $this->render();
     }
+
+    public function redirectToDetailPage($clientId)
+    {
+        return redirect()->route('admin.clients.show', ['id' => $clientId]);
+    }
+
 }
