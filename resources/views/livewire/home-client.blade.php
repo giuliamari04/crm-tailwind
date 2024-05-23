@@ -6,7 +6,7 @@
             <div>
                 <h6
                     class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-blue-gray-900 mb-1">
-                    Clienti</h6>
+                    Companies</h6>
             </div>
             <div x-data="{ open: false }" class="relative">
  <button  @onClick ("open = !open")  aria-expanded="false" aria-haspopup="menu" id=":rd2:"
